@@ -9,11 +9,11 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandPS5Controller;
 import frc.robot.subsystems.indexer.IndexerCommands;
-import frc.robot.subsystems.indexer.hopper.HopperCommands;
+import frc.robot.subsystems.indexer.hopper.HopperIO;
 import frc.robot.subsystems.indexer.hopper.HopperIOReal;
 import frc.robot.subsystems.indexer.hopper.HopperIOSim;
 import frc.robot.subsystems.indexer.hopper.HopperSubsystem;
-import frc.robot.subsystems.indexer.kicker.KickerCommands;
+import frc.robot.subsystems.indexer.kicker.KickerIO;
 import frc.robot.subsystems.indexer.kicker.KickerIOReal;
 import frc.robot.subsystems.indexer.kicker.KickerIOSim;
 import frc.robot.subsystems.indexer.kicker.KickerSubsystem;
@@ -29,14 +29,12 @@ public class RobotContainer {
     if (RobotBase.isReal()) {
       hopper = new HopperSubsystem(new HopperIOReal());
       kicker = new KickerSubsystem(new KickerIOReal());
-    }
-    else {
+    } else {
       if (RobotConstants.isReplay) {
-        //Replay
-        hopper = null;
-        kicker = null;
-      }
-      else {
+        // Replay
+        hopper = new HopperSubsystem(new HopperIO() {});
+        kicker = new KickerSubsystem(new KickerIO() {});
+      } else {
         hopper = new HopperSubsystem(new HopperIOSim());
         kicker = new KickerSubsystem(new KickerIOSim());
       }
@@ -53,5 +51,4 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     return Commands.print("No autonomous command configured");
   }
-  
 }
