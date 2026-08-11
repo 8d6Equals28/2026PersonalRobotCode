@@ -8,10 +8,10 @@ import edu.wpi.first.wpilibj.RobotBase;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandPS5Controller;
-import frc.robot.subsystems.hopper.HopperCommands;
-import frc.robot.subsystems.hopper.HopperIOReal;
-import frc.robot.subsystems.hopper.HopperIOSim;
-import frc.robot.subsystems.hopper.HopperSubsystem;
+import frc.robot.subsystems.indexer.hopper.HopperCommands;
+import frc.robot.subsystems.indexer.hopper.HopperIOReal;
+import frc.robot.subsystems.indexer.hopper.HopperIOSim;
+import frc.robot.subsystems.indexer.hopper.HopperSubsystem;
 
 public class RobotContainer {
 
@@ -40,6 +40,7 @@ public class RobotContainer {
     driverController.L2().whileTrue(HopperCommands.runForwardFast(hopper));
     driverController.L1().whileTrue(HopperCommands.runForwardSlow(hopper));
     driverController.R2().whileTrue(HopperCommands.runBackward(hopper));
+    driverController.R1().whileTrue(HopperCommands.stop(hopper));
   }
 
   public Command getAutonomousCommand() {

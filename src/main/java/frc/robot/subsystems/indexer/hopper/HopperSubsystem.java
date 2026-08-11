@@ -1,9 +1,10 @@
-package frc.robot.subsystems.hopper;
+package frc.robot.subsystems.indexer.hopper;
 
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.subsystems.hopper.HopperIO.HopperIOInputs;
+import frc.robot.subsystems.hopper.HopperIOInputsAutoLogged;
+import frc.robot.subsystems.indexer.hopper.HopperIO.HopperIOInputs;
 import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.wpilibj.RobotBase;
 import org.littletonrobotics.junction.Logger;
@@ -23,8 +24,8 @@ public class HopperSubsystem extends SubsystemBase {
     }
 
 
-    public void setVoltage(double voltage) {
-        io.setVoltage(voltage);
+    public void setSpeed(double speed) {
+        io.setSpeed(speed);
     }
     
 }

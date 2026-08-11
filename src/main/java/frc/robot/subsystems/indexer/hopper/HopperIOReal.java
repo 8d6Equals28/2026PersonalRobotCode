@@ -1,4 +1,4 @@
-package frc.robot.subsystems.hopper;
+package frc.robot.subsystems.indexer.hopper;
 
 import com.revrobotics.PersistMode;
 import com.revrobotics.RelativeEncoder;
@@ -22,7 +22,8 @@ public class HopperIOReal implements HopperIO{
     }
 
     @Override
-    public void setVoltage(double voltage) {
-        hopperSpark.setVoltage(voltage);
+    public void setSpeed(double speed) {
+        speed *= HopperConstants.speed_multiplier;
+        hopperSpark.setVoltage(speed);
     }
 }

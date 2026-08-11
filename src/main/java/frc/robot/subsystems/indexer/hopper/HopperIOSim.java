@@ -1,4 +1,4 @@
-package frc.robot.subsystems.hopper;
+package frc.robot.subsystems.indexer.hopper;
 
 import com.revrobotics.PersistMode;
 import com.revrobotics.RelativeEncoder;
@@ -10,9 +10,7 @@ import com.revrobotics.spark.config.SparkMaxConfig;
 import edu.wpi.first.math.system.plant.DCMotor;
 import edu.wpi.first.wpilibj.simulation.DCMotorSim;
 import edu.wpi.first.wpilibj.simulation.EncoderSim;
-import frc.robot.subsystems.hopper.HopperIO.HopperIOInputs;
-
-
+import frc.robot.subsystems.indexer.hopper.HopperIO.HopperIOInputs;
 import edu.wpi.first.math.system.plant.LinearSystemId;
 
 public class HopperIOSim implements HopperIO {
@@ -34,8 +32,9 @@ public class HopperIOSim implements HopperIO {
     }
 
     @Override
-    public void setVoltage(double voltage) {
-        hopperMotorSim.setInputVoltage(voltage);
-        simulatedOutput = voltage/12;
+    public void setSpeed(double speed) {
+        speed *= HopperConstants.speed_multiplier;
+        hopperMotorSim.setInputVoltage(speed);
+        simulatedOutput = speed/12;
     }
 }

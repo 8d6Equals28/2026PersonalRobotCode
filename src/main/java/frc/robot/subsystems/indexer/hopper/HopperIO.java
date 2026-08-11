@@ -1,4 +1,4 @@
-package frc.robot.subsystems.hopper;
+package frc.robot.subsystems.indexer.hopper;
 
 import org.littletonrobotics.junction.AutoLog;
 
@@ -11,5 +11,5 @@ public interface HopperIO {
 
     public default void updateInputs(HopperIOInputs inputs) {}
 
-    public default void setVoltage(double voltage) {}
+    public default void setSpeed(double speed) {}
 }

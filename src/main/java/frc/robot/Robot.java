@@ -12,9 +12,9 @@ import org.littletonrobotics.junction.Logger;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.robot.subsystems.hopper.HopperIOReal;
-import frc.robot.subsystems.hopper.HopperIOSim;
-import frc.robot.subsystems.hopper.HopperSubsystem;
+import frc.robot.subsystems.indexer.hopper.HopperIOReal;
+import frc.robot.subsystems.indexer.hopper.HopperIOSim;
+import frc.robot.subsystems.indexer.hopper.HopperSubsystem;
 
 public class Robot extends LoggedRobot {
   private Command autoCommand;
