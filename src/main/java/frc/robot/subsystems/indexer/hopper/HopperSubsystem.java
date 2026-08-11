@@ -3,7 +3,7 @@ package frc.robot.subsystems.indexer.hopper;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.subsystems.hopper.HopperIOInputsAutoLogged;
+import frc.robot.subsystems.indexer.hopper.HopperIOInputsAutoLogged;
 import frc.robot.subsystems.indexer.hopper.HopperIO.HopperIOInputs;
 import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.wpilibj.RobotBase;

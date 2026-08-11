@@ -11,7 +11,7 @@ import org.littletonrobotics.junction.Logger;
 
 public class KickerSubsystem extends SubsystemBase {
     private final KickerIO io;
-    //private final KickerIOInputsAutoLogged inputs = new KickerIOInputsAutoLogged();
+    private final KickerIOInputsAutoLogged inputs = new KickerIOInputsAutoLogged();
 
     public KickerSubsystem(KickerIO io) {
         this.io = io;
@@ -19,8 +19,8 @@ public class KickerSubsystem extends SubsystemBase {
 
     @Override
     public void periodic() {
-        //io.updateInputs(inputs);
-        //Logger.processInputs("Kicker", inputs);
+        io.updateInputs(inputs);
+        Logger.processInputs("Kicker", inputs);
     }
 
 
