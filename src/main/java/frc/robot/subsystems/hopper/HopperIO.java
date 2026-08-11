@@ -5,8 +5,8 @@ import org.littletonrobotics.junction.AutoLog;
 public interface HopperIO {
     @AutoLog
     public static class HopperIOInputs {
-        double rotationsPerSec;
-        double appliedOutput;
+        public double rotationsPerSec = 0;
+        public double appliedOutput = 0;
     }
 
     public default void updateInputs(HopperIOInputs inputs) {}
