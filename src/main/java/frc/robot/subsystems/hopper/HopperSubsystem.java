@@ -10,7 +10,7 @@ import org.littletonrobotics.junction.Logger;
 
 public class HopperSubsystem extends SubsystemBase {
     private final HopperIO io;
-    private final HopperIOInputs inputs = new HopperIOInputs();
+    private final HopperIOInputsAutoLogged inputs = new HopperIOInputsAutoLogged();
 
     public HopperSubsystem(HopperIO io) {
         this.io = io;
@@ -19,7 +19,7 @@ public class HopperSubsystem extends SubsystemBase {
     @Override
     public void periodic() {
         io.updateInputs(inputs);
-        //Logger.processInputs("Hopper", inputs);
+        Logger.processInputs("Hopper", inputs);
     }
 
 
