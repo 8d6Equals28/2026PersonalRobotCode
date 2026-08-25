@@ -15,7 +15,6 @@ public class HopperSubsystem extends SubsystemBase {
   public void periodic() {
     io.updateInputs(inputs);
     Logger.processInputs("Hopper", inputs);
-    Logger.recordOutput("Yes", 67);
   }
 
   public void setSpeed(double speed) {
