@@ -8,7 +8,7 @@ import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.config.SparkMaxConfig;
 
 public class KickerIOReal implements KickerIO {
-  public final SparkMax kickerSpark = new SparkMax(KickerConstants.CAN_ID, MotorType.kBrushless);
+  public final SparkMax kickerSpark = new SparkMax(KickerConstants.canId, MotorType.kBrushless);
   public final RelativeEncoder kickerEncoder = kickerSpark.getEncoder();
 
   public KickerIOReal() {
@@ -18,13 +18,13 @@ public class KickerIOReal implements KickerIO {
 
   @Override
   public void updateInputs(KickerIOInputs inputs) {
-    inputs.rotationsPerSec = kickerEncoder.getVelocity() / KickerConstants.REDUCTION / 60;
+    inputs.rotationsPerSec = kickerEncoder.getVelocity() / KickerConstants.reduction / 60;
     inputs.appliedOutput = kickerSpark.getAppliedOutput();
   }
 
   @Override
   public void setSpeed(double speed) {
-    speed *= KickerConstants.speed_multiplier;
+    speed *= KickerConstants.speedMultiplier;
     kickerSpark.setVoltage(speed);
   }
 }

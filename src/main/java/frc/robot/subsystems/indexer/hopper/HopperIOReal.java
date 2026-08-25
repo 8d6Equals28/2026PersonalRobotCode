@@ -8,7 +8,7 @@ import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.config.SparkMaxConfig;
 
 public class HopperIOReal implements HopperIO {
-  public final SparkMax hopperSpark = new SparkMax(HopperConstants.CAN_ID, MotorType.kBrushless);
+  public final SparkMax hopperSpark = new SparkMax(HopperConstants.canId, MotorType.kBrushless);
   public final RelativeEncoder hopperEncoder = hopperSpark.getEncoder();
 
   public HopperIOReal() {
@@ -18,13 +18,13 @@ public class HopperIOReal implements HopperIO {
 
   @Override
   public void updateInputs(HopperIOInputs inputs) {
-    inputs.rotationsPerSec = hopperEncoder.getVelocity() / HopperConstants.REDUCTION / 60;
+    inputs.rotationsPerSec = hopperEncoder.getVelocity() / HopperConstants.reduction / 60;
     inputs.appliedOutput = hopperSpark.getAppliedOutput();
   }
 
   @Override
   public void setSpeed(double speed) {
-    speed *= HopperConstants.speed_multiplier;
+    speed *= HopperConstants.speedMultiplier;
     hopperSpark.setVoltage(speed);
   }
 }

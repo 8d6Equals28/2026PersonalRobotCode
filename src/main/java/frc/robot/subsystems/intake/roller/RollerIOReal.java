@@ -8,23 +8,23 @@ import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.config.SparkMaxConfig;
 
 public class RollerIOReal implements RollerIO {
-  public final SparkMax hopperSpark = new SparkMax(RollerConstants.CAN_ID, MotorType.kBrushless);
-  public final RelativeEncoder hopperEncoder = hopperSpark.getEncoder();
+  public final SparkMax rollerSpark = new SparkMax(RollerConstants.canId, MotorType.kBrushless);
+  public final RelativeEncoder rollerEncoder = rollerSpark.getEncoder();
 
   public RollerIOReal() {
-    hopperSpark.configure(
+    rollerSpark.configure(
         new SparkMaxConfig(), ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
   }
 
   @Override
   public void updateInputs(RollerIOInputs inputs) {
-    inputs.rotationsPerSec = hopperEncoder.getVelocity() / RollerConstants.REDUCTION / 60;
-    inputs.appliedOutput = hopperSpark.getAppliedOutput();
+    inputs.rotationsPerSec = rollerEncoder.getVelocity() / RollerConstants.reduction / 60;
+    inputs.appliedOutput = rollerSpark.getAppliedOutput();
   }
 
   @Override
   public void setSpeed(double speed) {
-    speed *= RollerConstants.speed_multiplier;
-    hopperSpark.setVoltage(speed);
+    speed *= RollerConstants.speedMultiplier;
+    rollerSpark.setVoltage(speed);
   }
 }

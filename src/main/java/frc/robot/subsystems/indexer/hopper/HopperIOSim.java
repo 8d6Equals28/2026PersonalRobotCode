@@ -18,13 +18,13 @@ public class HopperIOSim implements HopperIO {
   public void updateInputs(HopperIOInputs inputs) {
     hopperMotorSim.update(0.02);
     inputs.rotationsPerSec =
-        hopperMotorSim.getAngularVelocityRPM() / HopperConstants.REDUCTION / 60;
+        hopperMotorSim.getAngularVelocityRPM() / HopperConstants.reduction / 60;
     inputs.appliedOutput = simulatedOutput;
   }
 
   @Override
   public void setSpeed(double speed) {
-    speed *= HopperConstants.speed_multiplier;
+    speed *= HopperConstants.speedMultiplier;
     hopperMotorSim.setInputVoltage(speed);
     simulatedOutput = speed / 12;
   }

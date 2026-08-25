@@ -5,7 +5,7 @@ import org.littletonrobotics.junction.Logger;
 
 public class RollerSubsystem extends SubsystemBase {
   private final RollerIO io;
-  //private final RollerIOInputsAutoLogged inputs = new RollerIOInputsAutoLogged();
+  private final RollerIOInputsAutoLogged inputs = new RollerIOInputsAutoLogged();
 
   public RollerSubsystem(RollerIO io) {
     this.io = io;
@@ -13,8 +13,9 @@ public class RollerSubsystem extends SubsystemBase {
 
   @Override
   public void periodic() {
-    //io.updateInputs(inputs);
-    //Logger.processInputs("Roller", inputs);
+    io.updateInputs(inputs);
+    Logger.processInputs("Roller", inputs);
+    Logger.recordOutput("yes", 4);
   }
 
   public void setSpeed(double speed) {

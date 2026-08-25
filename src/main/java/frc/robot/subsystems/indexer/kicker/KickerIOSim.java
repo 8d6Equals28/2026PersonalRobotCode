@@ -18,13 +18,13 @@ public class KickerIOSim implements KickerIO {
   public void updateInputs(KickerIOInputs inputs) {
     kickerMotorSim.update(0.02);
     inputs.rotationsPerSec =
-        kickerMotorSim.getAngularVelocityRPM() / KickerConstants.REDUCTION / 60;
+        kickerMotorSim.getAngularVelocityRPM() / KickerConstants.reduction / 60;
     inputs.appliedOutput = simulatedOutput;
   }
 
   @Override
   public void setSpeed(double speed) {
-    speed *= KickerConstants.speed_multiplier;
+    speed *= KickerConstants.speedMultiplier;
     kickerMotorSim.setInputVoltage(speed);
     simulatedOutput = speed / 12;
   }

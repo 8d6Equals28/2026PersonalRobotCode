@@ -1,9 +1,9 @@
-package frc.robot.subsystems.indexer.roller;
+package frc.robot.subsystems.intake.roller;
 
 import edu.wpi.first.math.system.plant.DCMotor;
 import edu.wpi.first.math.system.plant.LinearSystemId;
 import edu.wpi.first.wpilibj.simulation.DCMotorSim;
-import frc.robot.subsystems.indexer.roller.RollerIO.RollerIOInputs;
+import frc.robot.subsystems.intake.roller.RollerIO.RollerIOInputs;
 
 public class RollerIOSim implements RollerIO {
   private double simulatedOutput;
@@ -18,13 +18,13 @@ public class RollerIOSim implements RollerIO {
   public void updateInputs(RollerIOInputs inputs) {
     rollerMotorSim.update(0.02);
     inputs.rotationsPerSec =
-        rollerMotorSim.getAngularVelocityRPM() / RollerConstants.REDUCTION / 60;
+        rollerMotorSim.getAngularVelocityRPM() / RollerConstants.reduction / 60;
     inputs.appliedOutput = simulatedOutput;
   }
 
   @Override
   public void setSpeed(double speed) {
-    speed *= RollerConstants.speed_multiplier;
+    speed *= RollerConstants.speedMultiplier;
     rollerMotorSim.setInputVoltage(speed);
     simulatedOutput = speed / 12;
   }
