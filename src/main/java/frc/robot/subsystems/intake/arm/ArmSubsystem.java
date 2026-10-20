@@ -1,5 +1,3 @@
 package frc.robot.subsystems.intake.arm;
 
-public class ArmSubsystem {
-
-}
+public class ArmSubsystem {}
