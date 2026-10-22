@@ -26,6 +26,12 @@ public class KickerIOSim implements KickerIO {
   public void setSpeed(double speed) {
     speed *= KickerConstants.speedMultiplier;
     kickerMotorSim.setInputVoltage(speed);
-    simulatedOutput = speed / 12;
+    simulatedOutput = speed;
+  }
+
+  @Override
+  public void setVoltage(double voltage) {
+    kickerMotorSim.setInputVoltage(voltage);
+    simulatedOutput = voltage;
   }
 }

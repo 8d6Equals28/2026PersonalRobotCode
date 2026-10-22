@@ -26,6 +26,12 @@ public class HopperIOSim implements HopperIO {
   public void setSpeed(double speed) {
     speed *= HopperConstants.speedMultiplier;
     hopperMotorSim.setInputVoltage(speed);
-    simulatedOutput = speed / 12;
+    simulatedOutput = speed;
+  }
+
+  @Override
+  public void setVoltage(double voltage) {
+    hopperMotorSim.setInputVoltage(voltage);
+    simulatedOutput = voltage;
   }
 }

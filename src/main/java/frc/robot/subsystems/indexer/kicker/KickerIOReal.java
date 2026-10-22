@@ -27,4 +27,9 @@ public class KickerIOReal implements KickerIO {
     speed *= KickerConstants.speedMultiplier;
     kickerSpark.setVoltage(speed);
   }
+
+  @Override
+  public void setVoltage(double voltage) {
+    kickerSpark.setVoltage(voltage);
+  }
 }

@@ -26,4 +26,10 @@ public class KickerCommands {
       kicker.setSpeed(0);
     });
   }
+
+  public static Command runForwardPID(KickerSubsystem kicker) {
+    return kicker.run(() -> {
+      kicker.setGoalVel(1);
+    });
+  }
 }

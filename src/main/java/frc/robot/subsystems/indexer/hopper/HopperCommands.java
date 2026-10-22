@@ -26,4 +26,16 @@ public class HopperCommands {
       hopper.setSpeed(0);
     });
   }
+
+  public static Command runForwardPID(HopperSubsystem hopper) {
+    return hopper.run(() -> {
+      hopper.setGoalVel(16);
+    });
+  }
+
+  public static Command runBackwardPID(HopperSubsystem hopper) {
+    return hopper.run(() -> {
+      hopper.setGoalVel(-16);
+    });
+  }
 }

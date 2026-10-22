@@ -27,4 +27,9 @@ public class HopperIOReal implements HopperIO {
     speed *= HopperConstants.speedMultiplier;
     hopperSpark.setVoltage(speed);
   }
+
+  @Override
+  public void setVoltage(double voltage) {
+    hopperSpark.setVoltage(voltage);
+  }
 }

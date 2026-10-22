@@ -12,4 +12,6 @@ public interface KickerIO {
   public default void updateInputs(KickerIOInputs inputs) {}
 
   public default void setSpeed(double speed) {}
+
+  public default void setVoltage(double voltage) {}
 }
