@@ -27,7 +27,6 @@ public class HopperSubsystem extends SubsystemBase {
       hopperFF = new SimpleMotorFeedforward(
           HopperConstants.kSSim, HopperConstants.kVSim, HopperConstants.kASim, 0.02);
     }
-
     this.io = io;
   }
 
@@ -37,14 +36,14 @@ public class HopperSubsystem extends SubsystemBase {
     Logger.processInputs("Hopper", inputs);
   }
 
-  public void setSpeed(double speed) {
-    io.setSpeed(speed);
-  }
-
   public void setGoalVel(double goalVel) {
     double voltage =
         hopperPID.calculate(inputs.rotationsPerSec, goalVel) + hopperFF.calculate(goalVel);
-    voltage = MathUtil.clamp(voltage, -12.0, 12.0);
+    voltage = MathUtil.clamp(voltage, -8.0, 8.0);
     io.setVoltage(voltage);
+  }
+
+  public void stop() {
+    io.stop();
   }
 }

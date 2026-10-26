@@ -6,32 +6,26 @@ import edu.wpi.first.wpilibj.simulation.DCMotorSim;
 import frc.robot.subsystems.indexer.kicker.KickerIO.KickerIOInputs;
 
 public class KickerIOSim implements KickerIO {
-  private double simulatedOutput;
   private final DCMotorSim kickerMotorSim = new DCMotorSim(
       LinearSystemId.createDCMotorSystem(DCMotor.getNEO(1), 0.001, 1), DCMotor.getNEO(1));
 
-  public KickerIOSim() {
-    simulatedOutput = 0;
-  }
+  public KickerIOSim() {}
 
   @Override
   public void updateInputs(KickerIOInputs inputs) {
     kickerMotorSim.update(0.02);
     inputs.rotationsPerSec =
         kickerMotorSim.getAngularVelocityRPM() / KickerConstants.reduction / 60;
-    inputs.appliedOutput = simulatedOutput;
-  }
-
-  @Override
-  public void setSpeed(double speed) {
-    speed *= KickerConstants.speedMultiplier;
-    kickerMotorSim.setInputVoltage(speed);
-    simulatedOutput = speed;
+    inputs.appliedOutput = kickerMotorSim.getInputVoltage();
   }
 
   @Override
   public void setVoltage(double voltage) {
     kickerMotorSim.setInputVoltage(voltage);
-    simulatedOutput = voltage;
+  }
+
+  @Override
+  public void stop() {
+    kickerMotorSim.setInputVoltage(0);
   }
 }

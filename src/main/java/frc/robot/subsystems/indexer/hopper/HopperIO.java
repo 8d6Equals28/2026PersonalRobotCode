@@ -11,7 +11,7 @@ public interface HopperIO {
 
   public default void updateInputs(HopperIOInputs inputs) {}
 
-  public default void setSpeed(double speed) {}
-
   public default void setVoltage(double voltage) {}
+
+  public default void stop() {}
 }

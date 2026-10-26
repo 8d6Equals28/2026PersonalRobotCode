@@ -19,17 +19,16 @@ public class KickerIOReal implements KickerIO {
   @Override
   public void updateInputs(KickerIOInputs inputs) {
     inputs.rotationsPerSec = kickerEncoder.getVelocity() / KickerConstants.reduction / 60;
-    inputs.appliedOutput = kickerSpark.getAppliedOutput();
-  }
-
-  @Override
-  public void setSpeed(double speed) {
-    speed *= KickerConstants.speedMultiplier;
-    kickerSpark.setVoltage(speed);
+    inputs.appliedOutput = kickerSpark.getAppliedOutput() * 12;
   }
 
   @Override
   public void setVoltage(double voltage) {
     kickerSpark.setVoltage(voltage);
+  }
+
+  @Override
+  public void stop() {
+    kickerSpark.setVoltage(0);
   }
 }

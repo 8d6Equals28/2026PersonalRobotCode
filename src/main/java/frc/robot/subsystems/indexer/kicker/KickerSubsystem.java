@@ -6,7 +6,6 @@ import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.wpilibj.RobotBase;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import org.littletonrobotics.junction.Logger;
-// import frc.robot.subsystems.indexer.kicker.KickerIOInputsAutoLogged;
 
 public class KickerSubsystem extends SubsystemBase {
   private final KickerIO io;
@@ -16,7 +15,6 @@ public class KickerSubsystem extends SubsystemBase {
   private final SimpleMotorFeedforward kickerFF;
 
   public KickerSubsystem(KickerIO io) {
-
     if (RobotBase.isReal()) {
       kickerPID =
           new PIDController(KickerConstants.kPReal, KickerConstants.kIReal, KickerConstants.kDReal);
@@ -28,7 +26,6 @@ public class KickerSubsystem extends SubsystemBase {
       kickerFF = new SimpleMotorFeedforward(
           KickerConstants.kSSim, KickerConstants.kVSim, KickerConstants.kASim, 0.02);
     }
-
     this.io = io;
   }
 
@@ -38,14 +35,14 @@ public class KickerSubsystem extends SubsystemBase {
     Logger.processInputs("Kicker", inputs);
   }
 
-  public void setSpeed(double speed) {
-    io.setSpeed(speed);
-  }
-
   public void setGoalVel(double goalVel) {
     double voltage =
         kickerPID.calculate(inputs.rotationsPerSec, goalVel) + kickerFF.calculate(goalVel);
-    voltage = MathUtil.clamp(voltage, -12.0, 12.0);
+    voltage = MathUtil.clamp(voltage, -8.0, 8.0);
     io.setVoltage(voltage);
+  }
+
+  public void stop() {
+    io.stop();
   }
 }

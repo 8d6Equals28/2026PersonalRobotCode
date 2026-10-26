@@ -3,39 +3,17 @@ package frc.robot.subsystems.indexer.hopper;
 import edu.wpi.first.wpilibj2.command.Command;
 
 public class HopperCommands {
-  public static Command runForwardFast(HopperSubsystem hopper) {
-    return hopper.run(() -> {
-      hopper.setSpeed(1);
-    });
-  }
-
-  public static Command runForwardSlow(HopperSubsystem hopper) {
-    return hopper.run(() -> {
-      hopper.setSpeed(0.3);
-    });
-  }
-
-  public static Command runBackward(HopperSubsystem hopper) {
-    return hopper.run(() -> {
-      hopper.setSpeed(-1);
-    });
-  }
-
   public static Command stop(HopperSubsystem hopper) {
-    return hopper.run(() -> {
-      hopper.setSpeed(0);
+    return hopper.runOnce(() -> {
+      hopper.stop();
     });
   }
 
   public static Command runForwardPID(HopperSubsystem hopper) {
-    return hopper.run(() -> {
-      hopper.setGoalVel(16);
-    });
+    return hopper.runEnd(() -> hopper.setGoalVel(10), hopper::stop);
   }
 
   public static Command runBackwardPID(HopperSubsystem hopper) {
-    return hopper.run(() -> {
-      hopper.setGoalVel(-16);
-    });
+    return hopper.runEnd(() -> hopper.setGoalVel(-10), hopper::stop);
   }
 }

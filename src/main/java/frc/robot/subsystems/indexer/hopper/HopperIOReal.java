@@ -19,17 +19,16 @@ public class HopperIOReal implements HopperIO {
   @Override
   public void updateInputs(HopperIOInputs inputs) {
     inputs.rotationsPerSec = hopperEncoder.getVelocity() / HopperConstants.reduction / 60;
-    inputs.appliedOutput = hopperSpark.getAppliedOutput();
-  }
-
-  @Override
-  public void setSpeed(double speed) {
-    speed *= HopperConstants.speedMultiplier;
-    hopperSpark.setVoltage(speed);
+    inputs.appliedOutput = hopperSpark.getAppliedOutput() * 12;
   }
 
   @Override
   public void setVoltage(double voltage) {
     hopperSpark.setVoltage(voltage);
+  }
+
+  @Override
+  public void stop() {
+    hopperSpark.setVoltage(0);
   }
 }

@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.RobotBase;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandPS5Controller;
+import frc.robot.subsystems.indexer.IndexerCommands;
 import frc.robot.subsystems.indexer.hopper.HopperCommands;
 import frc.robot.subsystems.indexer.hopper.HopperIO;
 import frc.robot.subsystems.indexer.hopper.HopperIOReal;
@@ -22,10 +23,12 @@ public class RobotContainer {
 
   private final HopperSubsystem hopper;
   private final KickerSubsystem kicker;
+  private final IndexerCommands indexer;
 
   private final CommandPS5Controller driverController = new CommandPS5Controller(0);
 
   public RobotContainer() {
+
     if (RobotBase.isReal()) {
       hopper = new HopperSubsystem(new HopperIOReal());
       kicker = new KickerSubsystem(new KickerIOReal());
@@ -39,6 +42,8 @@ public class RobotContainer {
         kicker = new KickerSubsystem(new KickerIOSim());
       }
     }
+
+    indexer = new IndexerCommands();
 
     configureBindings();
   }
