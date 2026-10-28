@@ -19,12 +19,16 @@ public class RollerIOReal implements RollerIO {
   @Override
   public void updateInputs(RollerIOInputs inputs) {
     inputs.rotationsPerSec = rollerEncoder.getVelocity() / RollerConstants.reduction / 60;
-    inputs.appliedOutput = rollerSpark.getAppliedOutput();
+    inputs.appliedOutput = rollerSpark.getAppliedOutput() * 12;
   }
 
   @Override
-  public void setSpeed(double speed) {
-    speed *= RollerConstants.speedMultiplier;
-    rollerSpark.setVoltage(speed);
+  public void setVoltage(double voltage) {
+    rollerSpark.setVoltage(voltage);
+  }
+
+  @Override
+  public void stop() {
+    rollerSpark.setVoltage(0);
   }
 }

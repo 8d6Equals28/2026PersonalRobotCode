@@ -6,26 +6,26 @@ import edu.wpi.first.wpilibj.simulation.DCMotorSim;
 import frc.robot.subsystems.intake.roller.RollerIO.RollerIOInputs;
 
 public class RollerIOSim implements RollerIO {
-  private double simulatedOutput;
   private final DCMotorSim rollerMotorSim = new DCMotorSim(
       LinearSystemId.createDCMotorSystem(DCMotor.getNEO(1), 0.001, 1), DCMotor.getNEO(1));
 
-  public RollerIOSim() {
-    simulatedOutput = 0;
-  }
+  public RollerIOSim() {}
 
   @Override
   public void updateInputs(RollerIOInputs inputs) {
     rollerMotorSim.update(0.02);
     inputs.rotationsPerSec =
         rollerMotorSim.getAngularVelocityRPM() / RollerConstants.reduction / 60;
-    inputs.appliedOutput = simulatedOutput;
+    inputs.appliedOutput = rollerMotorSim.getInputVoltage();
   }
 
   @Override
-  public void setSpeed(double speed) {
-    speed *= RollerConstants.speedMultiplier;
-    rollerMotorSim.setInputVoltage(speed);
-    simulatedOutput = speed / 12;
+  public void setVoltage(double voltage) {
+    rollerMotorSim.setInputVoltage(voltage);
+  }
+
+  @Override
+  public void stop() {
+    rollerMotorSim.setInputVoltage(0);
   }
 }
