@@ -10,19 +10,19 @@ public class FlywheelConstants {
 
   public static double speedMultiplier = 11;
 
-  public static double kPReal = 0.15; // 0.5;
+  public static double kPReal = 0.07; // 0.5;
   public static double kIReal = 0;
   public static double kDReal = 0;
 
-  public static double kSReal = 0.3;
-  public static double kVReal = 0.385;
+  public static double kSReal = 0.15;
+  public static double kVReal = 0.1;
   public static double kAReal = 0;
 
-  public static double kPSim = 5;
+  public static double kPSim = 0;
   public static double kISim = 0;
   public static double kDSim = 0;
 
   public static double kSSim = 0;
-  public static double kVSim = 0.3;
+  public static double kVSim = 0.1;
   public static double kASim = 0;
 }

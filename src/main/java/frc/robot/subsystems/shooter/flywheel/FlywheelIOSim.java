@@ -23,8 +23,9 @@ public class FlywheelIOSim implements FlywheelIO {
     inputs.rotationsPerSecLeft =
         flywheelMotorSimLeft.getAngularVelocityRPM() / FlywheelConstants.reduction / 60;
 
-    inputs.rotationsPerSecRight = flywheelMotorSimRight.getAngularVelocityRPM() / FlywheelConstants.reduction / 60;
-    
+    inputs.rotationsPerSecRight =
+        flywheelMotorSimRight.getAngularVelocityRPM() / FlywheelConstants.reduction / 60;
+
     inputs.appliedOutputLeft = flywheelMotorSimLeft.getInputVoltage();
     inputs.appliedOutputRight = flywheelMotorSimRight.getInputVoltage();
   }

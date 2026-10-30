@@ -24,7 +24,7 @@ public class FlywheelSubsystem extends SubsystemBase {
           FlywheelConstants.kPReal, FlywheelConstants.kIReal, FlywheelConstants.kDReal);
       flywheelFFLeft = new SimpleMotorFeedforward(
           FlywheelConstants.kSReal, FlywheelConstants.kVReal, FlywheelConstants.kAReal, 0.02);
-      
+
       flywheelPIDRight = new PIDController(
           FlywheelConstants.kPReal, FlywheelConstants.kIReal, FlywheelConstants.kDReal);
       flywheelFFRight = new SimpleMotorFeedforward(
@@ -34,7 +34,7 @@ public class FlywheelSubsystem extends SubsystemBase {
           FlywheelConstants.kPSim, FlywheelConstants.kISim, FlywheelConstants.kDSim);
       flywheelFFLeft = new SimpleMotorFeedforward(
           FlywheelConstants.kSSim, FlywheelConstants.kVSim, FlywheelConstants.kASim, 0.02);
-      
+
       flywheelPIDRight = new PIDController(
           FlywheelConstants.kPSim, FlywheelConstants.kISim, FlywheelConstants.kDSim);
       flywheelFFRight = new SimpleMotorFeedforward(
@@ -50,12 +50,12 @@ public class FlywheelSubsystem extends SubsystemBase {
   }
 
   public void setGoalVel(double goalVel) {
-    double voltageLeft =
-        flywheelPIDLeft.calculate(inputs.rotationsPerSecLeft, goalVel) + flywheelFFLeft.calculate(goalVel);
+    double voltageLeft = flywheelPIDLeft.calculate(inputs.rotationsPerSecLeft, goalVel)
+        + flywheelFFLeft.calculate(goalVel);
     voltageLeft = MathUtil.clamp(voltageLeft, -8.0, 8.0);
 
-    double voltageRight =
-        flywheelPIDRight.calculate(inputs.rotationsPerSecRight, goalVel) + flywheelFFRight.calculate(goalVel);
+    double voltageRight = flywheelPIDRight.calculate(inputs.rotationsPerSecRight, goalVel)
+        + flywheelFFRight.calculate(goalVel);
     voltageRight = MathUtil.clamp(voltageRight, -8.0, 8.0);
 
     io.setVoltage(voltageLeft, voltageRight);

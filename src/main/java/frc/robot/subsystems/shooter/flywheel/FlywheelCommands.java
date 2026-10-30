@@ -10,7 +10,7 @@ public class FlywheelCommands {
   }
 
   public static Command runForwardPID(FlywheelSubsystem flywheel) {
-    return flywheel.runEnd(() -> flywheel.setGoalVel(10), flywheel::stop);
+    return flywheel.runEnd(() -> flywheel.setGoalVel(60), flywheel::stop);
   }
 
   public static Command runBackwardPID(FlywheelSubsystem flywheel) {

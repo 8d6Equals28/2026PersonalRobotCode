@@ -1,15 +1,15 @@
 package frc.robot.subsystems.intake.roller;
 
 public class RollerConstants {
-  public static int canId = 9;
-  public static double reduction = 3.0;
+  public static int canId = 11;
+  public static double reduction = 1.6;
 
   public static double kPReal = 0.15; // 0.5;
   public static double kIReal = 0;
   public static double kDReal = 0;
 
-  public static double kSReal = 0.3;
-  public static double kVReal = 0.385;
+  public static double kSReal = 0.15;
+  public static double kVReal = 0.17;
   public static double kAReal = 0;
 
   public static double kPSim = 5;
