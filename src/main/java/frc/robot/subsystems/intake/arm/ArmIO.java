@@ -11,9 +11,9 @@ public interface ArmIO {
 
   public default void updateInputs(ArmIOInputs inputs) {}
 
-  public default void setSpeed(double speed) {}
+  public default void setVoltage(Double voltage) {}
 
-  public default void setPivotVoltage(Double voltage) {}
+  public default void stop() {}
 
   public default void resetPivotPosition(Double position) {}
 }
