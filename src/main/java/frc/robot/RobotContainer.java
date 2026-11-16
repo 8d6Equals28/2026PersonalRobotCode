@@ -28,6 +28,11 @@ import frc.robot.subsystems.shooter.flywheel.FlywheelIO;
 import frc.robot.subsystems.shooter.flywheel.FlywheelIOReal;
 import frc.robot.subsystems.shooter.flywheel.FlywheelIOSim;
 import frc.robot.subsystems.shooter.flywheel.FlywheelSubsystem;
+import frc.robot.subsystems.shooter.hood.HoodCommands;
+import frc.robot.subsystems.shooter.hood.HoodIO;
+import frc.robot.subsystems.shooter.hood.HoodIOReal;
+import frc.robot.subsystems.shooter.hood.HoodIOSim;
+import frc.robot.subsystems.shooter.hood.HoodSubsystem;
 
 public class RobotContainer {
 
@@ -35,6 +40,7 @@ public class RobotContainer {
   private final KickerSubsystem kicker;
   private final RollerSubsystem roller;
   private final FlywheelSubsystem flywheel;
+  private final HoodSubsystem hood;
 
   private final CommandPS5Controller driverController = new CommandPS5Controller(0);
 
@@ -45,6 +51,7 @@ public class RobotContainer {
       kicker = new KickerSubsystem(new KickerIOReal());
       roller = new RollerSubsystem(new RollerIOReal());
       flywheel = new FlywheelSubsystem(new FlywheelIOReal());
+      hood = new HoodSubsystem(new HoodIOReal());
     } else {
       if (RobotConstants.isReplay) {
         // Replay
@@ -52,21 +59,22 @@ public class RobotContainer {
         kicker = new KickerSubsystem(new KickerIO() {});
         roller = new RollerSubsystem(new RollerIO() {});
         flywheel = new FlywheelSubsystem(new FlywheelIO() {});
+        hood = new HoodSubsystem(new HoodIO() {});
       } else {
         hopper = new HopperSubsystem(new HopperIOSim());
         kicker = new KickerSubsystem(new KickerIOSim());
         roller = new RollerSubsystem(new RollerIOSim());
         flywheel = new FlywheelSubsystem(new FlywheelIOSim());
+        hood = new HoodSubsystem(new HoodIOSim());
       }
     }
     configureBindings();
   }
 
   private void configureBindings() {
-    driverController.circle().whileTrue(HopperCommands.runForwardPID(hopper));
-    driverController.circle().whileTrue(KickerCommands.runForwardPID(kicker));
-    driverController.circle().whileTrue(RollerCommands.runForwardPID(roller));
-    driverController.circle().whileTrue(FlywheelCommands.runForwardPID(flywheel));
+    driverController.povDown().whileTrue(HoodCommands.setPositionZero(hood));
+    driverController.povRight().whileTrue(HoodCommands.setPositionDown(hood));
+    driverController.povUp().whileTrue(HoodCommands.setPositionUp(hood));
   }
 
   public Command getAutonomousCommand() {
