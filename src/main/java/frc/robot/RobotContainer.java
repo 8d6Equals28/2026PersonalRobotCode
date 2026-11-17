@@ -18,6 +18,10 @@ import frc.robot.subsystems.indexer.kicker.KickerIO;
 import frc.robot.subsystems.indexer.kicker.KickerIOReal;
 import frc.robot.subsystems.indexer.kicker.KickerIOSim;
 import frc.robot.subsystems.indexer.kicker.KickerSubsystem;
+import frc.robot.subsystems.intake.arm.ArmIO;
+import frc.robot.subsystems.intake.arm.ArmIOReal;
+import frc.robot.subsystems.intake.arm.ArmIOSim;
+import frc.robot.subsystems.intake.arm.ArmSubsystem;
 import frc.robot.subsystems.intake.roller.RollerCommands;
 import frc.robot.subsystems.intake.roller.RollerIO;
 import frc.robot.subsystems.intake.roller.RollerIOReal;
@@ -41,6 +45,7 @@ public class RobotContainer {
   private final RollerSubsystem roller;
   private final FlywheelSubsystem flywheel;
   private final HoodSubsystem hood;
+  private final ArmSubsystem arm;
 
   private final CommandPS5Controller driverController = new CommandPS5Controller(0);
 
@@ -52,6 +57,7 @@ public class RobotContainer {
       roller = new RollerSubsystem(new RollerIOReal());
       flywheel = new FlywheelSubsystem(new FlywheelIOReal());
       hood = new HoodSubsystem(new HoodIOReal());
+      arm = new ArmSubsystem(new ArmIOReal());
     } else {
       if (RobotConstants.isReplay) {
         // Replay
@@ -60,12 +66,14 @@ public class RobotContainer {
         roller = new RollerSubsystem(new RollerIO() {});
         flywheel = new FlywheelSubsystem(new FlywheelIO() {});
         hood = new HoodSubsystem(new HoodIO() {});
+        arm = new ArmSubsystem(new ArmIO() {});
       } else {
         hopper = new HopperSubsystem(new HopperIOSim());
         kicker = new KickerSubsystem(new KickerIOSim());
         roller = new RollerSubsystem(new RollerIOSim());
         flywheel = new FlywheelSubsystem(new FlywheelIOSim());
         hood = new HoodSubsystem(new HoodIOSim());
+        arm = new ArmSubsystem(new ArmIOSim());
       }
     }
     configureBindings();
