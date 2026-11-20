@@ -24,7 +24,10 @@ public class HoodIOReal implements HoodIO {
 
   @Override
   public void setVoltage(double voltage) {
-    hoodSpark.setVoltage(voltage);
+    if (!(voltage > 0
+        && hoodEncoder.getPosition() / HoodConstants.reduction * 360 > HoodConstants.maxHeight)) {
+      hoodSpark.setVoltage(voltage);
+    }
   }
 
   @Override

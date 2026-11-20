@@ -26,9 +26,10 @@ public class HoodSubsystem extends SubsystemBase {
 
   public HoodSubsystem(HoodIO io) {
     if (RobotBase.isReal()) {
-      hoodProfile = new TrapezoidProfile.Constraints(HoodConstants.maxVelReal, HoodConstants.maxAccReal);
-      hoodPIDProfiled =
-          new ProfiledPIDController(HoodConstants.kPReal, HoodConstants.kIReal, HoodConstants.kDReal, hoodProfile);
+      hoodProfile =
+          new TrapezoidProfile.Constraints(HoodConstants.maxVelReal, HoodConstants.maxAccReal);
+      hoodPIDProfiled = new ProfiledPIDController(
+          HoodConstants.kPReal, HoodConstants.kIReal, HoodConstants.kDReal, hoodProfile);
       hoodFF = new SimpleMotorFeedforward(
           HoodConstants.kSReal, HoodConstants.kVReal, HoodConstants.kAReal, 0.02);
       kPTunable = new LoggedNetworkNumber("/Tuning/Hood/kP", HoodConstants.kPReal);
@@ -38,9 +39,10 @@ public class HoodSubsystem extends SubsystemBase {
       kVTunable = new LoggedNetworkNumber("/Tuning/Hood/kV", HoodConstants.kVReal);
       kATunable = new LoggedNetworkNumber("/Tuning/Hood/kA", HoodConstants.kAReal);
     } else {
-      hoodProfile = new TrapezoidProfile.Constraints(HoodConstants.maxVelSim, HoodConstants.maxAccSim);
-      hoodPIDProfiled =
-          new ProfiledPIDController(HoodConstants.kPSim, HoodConstants.kISim, HoodConstants.kDSim, hoodProfile);
+      hoodProfile =
+          new TrapezoidProfile.Constraints(HoodConstants.maxVelSim, HoodConstants.maxAccSim);
+      hoodPIDProfiled = new ProfiledPIDController(
+          HoodConstants.kPSim, HoodConstants.kISim, HoodConstants.kDSim, hoodProfile);
       hoodFF = new SimpleMotorFeedforward(
           HoodConstants.kSSim, HoodConstants.kVSim, HoodConstants.kASim, 0.02);
       kPTunable = new LoggedNetworkNumber("/Tuning/Hood/kP", HoodConstants.kPSim);

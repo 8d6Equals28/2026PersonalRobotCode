@@ -1,10 +1,8 @@
 package frc.robot.subsystems.intake.arm;
 
-import org.littletonrobotics.junction.networktables.LoggedNetworkNumber;
-
 public class ArmConstants {
   public static int canId = 12;
-  public static double reduction = 55.55555555555*5/3;
+  public static double reduction = 55.55555555555 * 5 / 3;
 
   public static double kPReal = 0;
   public static double kIReal = 0;

@@ -16,14 +16,14 @@ public class HoodConstants {
   public static double maxVelReal = 0;
   public static double maxAccReal = 0;
 
-  public static double kPSim = 0;
+  public static double kPSim = 1;
   public static double kISim = 0;
   public static double kDSim = 0;
 
   public static double kSSim = 0;
-  public static double kVSim = 0;
+  public static double kVSim = 0.125;
   public static double kASim = 0;
 
-  public static double maxVelSim = 0;
-  public static double maxAccSim = 0;
+  public static double maxVelSim = 15;
+  public static double maxAccSim = 40;
 }

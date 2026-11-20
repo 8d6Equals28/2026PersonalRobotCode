@@ -39,8 +39,7 @@ public class ArmSubsystem extends SubsystemBase {
       kVTunable = new LoggedNetworkNumber("/Tuning/Arm/kV", ArmConstants.kVReal);
       kATunable = new LoggedNetworkNumber("/Tuning/Arm/kA", ArmConstants.kAReal);
     } else {
-      armProfile =
-          new TrapezoidProfile.Constraints(ArmConstants.maxVelSim, ArmConstants.maxAccSim);
+      armProfile = new TrapezoidProfile.Constraints(ArmConstants.maxVelSim, ArmConstants.maxAccSim);
       armPIDProfiled = new ProfiledPIDController(
           ArmConstants.kPSim, ArmConstants.kISim, ArmConstants.kDSim, armProfile);
       armFF = new SimpleMotorFeedforward(

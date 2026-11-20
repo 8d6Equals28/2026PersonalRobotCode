@@ -4,16 +4,15 @@
 
 package frc.robot;
 
+/*
 import edu.wpi.first.wpilibj.RobotBase;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandPS5Controller;
-import frc.robot.subsystems.indexer.hopper.HopperCommands;
 import frc.robot.subsystems.indexer.hopper.HopperIO;
 import frc.robot.subsystems.indexer.hopper.HopperIOReal;
 import frc.robot.subsystems.indexer.hopper.HopperIOSim;
 import frc.robot.subsystems.indexer.hopper.HopperSubsystem;
-import frc.robot.subsystems.indexer.kicker.KickerCommands;
 import frc.robot.subsystems.indexer.kicker.KickerIO;
 import frc.robot.subsystems.indexer.kicker.KickerIOReal;
 import frc.robot.subsystems.indexer.kicker.KickerIOSim;
@@ -22,12 +21,10 @@ import frc.robot.subsystems.intake.arm.ArmIO;
 import frc.robot.subsystems.intake.arm.ArmIOReal;
 import frc.robot.subsystems.intake.arm.ArmIOSim;
 import frc.robot.subsystems.intake.arm.ArmSubsystem;
-import frc.robot.subsystems.intake.roller.RollerCommands;
 import frc.robot.subsystems.intake.roller.RollerIO;
 import frc.robot.subsystems.intake.roller.RollerIOReal;
 import frc.robot.subsystems.intake.roller.RollerIOSim;
 import frc.robot.subsystems.intake.roller.RollerSubsystem;
-import frc.robot.subsystems.shooter.flywheel.FlywheelCommands;
 import frc.robot.subsystems.shooter.flywheel.FlywheelIO;
 import frc.robot.subsystems.shooter.flywheel.FlywheelIOReal;
 import frc.robot.subsystems.shooter.flywheel.FlywheelIOSim;
@@ -37,9 +34,10 @@ import frc.robot.subsystems.shooter.hood.HoodIO;
 import frc.robot.subsystems.shooter.hood.HoodIOReal;
 import frc.robot.subsystems.shooter.hood.HoodIOSim;
 import frc.robot.subsystems.shooter.hood.HoodSubsystem;
+*/
 
 public class RobotContainer {
-
+/*
   private final HopperSubsystem hopper;
   private final KickerSubsystem kicker;
   private final RollerSubsystem roller;
@@ -88,4 +86,6 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     return Commands.print("No autonomous command configured");
   }
+*/
+
 }
